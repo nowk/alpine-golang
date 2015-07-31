@@ -6,7 +6,6 @@ ENV GOLANG_VERSION 1.4.2
 
 RUN apk --update add \
     go \
-    git \
     && rm -rf /var/cache/apk/* \
     && mkdir -p /go/src \
     && mkdir -p /go/bin \

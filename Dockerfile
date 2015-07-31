@@ -1,20 +1,26 @@
 FROM nowk/alpine-base:3.2
 MAINTAINER Yung Hwa Kwon <yung.kwon@damncarousel.com>
 
-RUN apk --update add \
-  go git \
-  && rm -rf /var/cache/apk/*
-
+ENV GOLANG_MAJOR 1.4
 ENV GOLANG_VERSION 1.4.2
 
-# apk go installs go at /usr/lib/go
-ENV PATH /usr/lib/go/bin:$PATH
+RUN apk --update add \
+    go \
+    git \
+    && rm -rf /var/cache/apk/* \
+    && mkdir -p /go/src \
+    && mkdir -p /go/bin \
+    && chmod -R 777 /go
 
-RUN mkdir -p /go/src /go/bin && chmod -R 777 /go
-
+ENV GOROOT /usr/lib/go    # apk go installs go at /usr/lib/go
 ENV GOPATH /go
-ENV PATH /go/bin:$PATH
+ENV PATH $GOROOT/bin:$GOPATH/bin:$PATH
 
-WORKDIR /go
+WORKDIR $GOPATH
 
 CMD [ "/bin/bash" ]
+
+LABEL \
+    version=$GOLANG_VERSION \
+    os="linux" \
+    arch="amd64"

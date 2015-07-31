@@ -18,7 +18,7 @@ ENV PATH $GOROOT/bin:$GOPATH/bin:$PATH
 
 WORKDIR $GOPATH
 
-CMD [ "/bin/bash" ]
+CMD [ "/bin/sh" ]
 
 LABEL \
     version=$GOLANG_VERSION \

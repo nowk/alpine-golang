@@ -16,3 +16,5 @@ ENV GOPATH /go
 ENV PATH /go/bin:$PATH
 
 WORKDIR /go
+
+CMD [ "/bin/bash" ]

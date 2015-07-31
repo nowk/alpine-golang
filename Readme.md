@@ -2,29 +2,29 @@
 
 Go + Alpine for Rocket ACI conversion.
 
-Includes:
-
-* git
-
-
 | Stats             |         |
 | ----------------- | ------- |
-| Docker Image Size | ~145 MB |
+| Docker Image Size | ~146 MB |
 | Rocket ACI Size   | ~42 MB  |
 
 ---
 
 `ENV` variables
 
-    GOROOT /usr/lib/go
-    GOPATH /go
-    PATH   $GOROOT/bin:$GOPATH/bin:$PATH
+    GOLANG_MAJOR   1.4
+    GOLANG_VERSION 1.4.2
+    GOROOT         /usr/lib/go
+    GOPATH         /go
+    PATH           $GOROOT/bin:$GOPATH/bin:$PATH
 
 ---
 
 __Converting:__
 
     docker2aci docker://nowk/alpine-golang:1.4.2
+
+*Latest version of the actool will properly export the LABEL directives defined 
+in the Dockerfile, else please read below.*
 
 Because the `arch` label is not exported, we will need to add that in manually 
 by extracting, modifying the manifest then rebuilding the ACI before adding to

@@ -12,7 +12,8 @@ RUN apk --update add \
     && mkdir -p /go/bin \
     && chmod -R 777 /go
 
-ENV GOROOT /usr/lib/go    # apk go installs go at /usr/lib/go
+# apk go installs go at /usr/lib/go
+ENV GOROOT /usr/lib/go
 ENV GOPATH /go
 ENV PATH $GOROOT/bin:$GOPATH/bin:$PATH
 

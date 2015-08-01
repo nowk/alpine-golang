@@ -2,6 +2,9 @@
 
 Go + Alpine for Rocket ACI conversion.
 
+    FROM nowk/alpine-base:3.2
+
+
 | Stats             |         |
 | ----------------- | ------- |
 | Docker Image Size | ~146 MB |

@@ -4,8 +4,8 @@ MAINTAINER Yung Hwa Kwon <yung.kwon@damncarousel.com>
 ENV GOLANG_MAJOR 1.4
 ENV GOLANG_VERSION 1.4.2
 
-RUN apk --update add \
-    go \
+RUN apk --update --arch=x86_64 add \
+    go=${GOLANG_VERSION}-r0 \
     && rm -rf /var/cache/apk/* \
     && mkdir -p /go/src \
     && mkdir -p /go/bin \

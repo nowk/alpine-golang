@@ -1,14 +1,16 @@
 FROM nowk/alpine-base:3.2
 MAINTAINER Yung Hwa Kwon <yung.kwon@damncarousel.com>
 
-ENV GOLANG_MAJOR 1.4
-ENV GOLANG_VERSION 1.4.2
+ENV GOLANG_MAJOR 1.5
+ENV GOLANG_VERSION 1.5
 
-RUN apk --update --arch=x86_64 add \
+RUN apk --update-cache --allow-untrusted \
+	--repository http://dl-3.alpinelinux.org/alpine/edge/main/ \
+	--arch=x86_64 add \
     go=${GOLANG_VERSION}-r0 \
-    && rm -rf /var/cache/apk/* \
-    && mkdir -p /go/src \
-    && mkdir -p /go/bin \
+    && rm -rf /var/cache/apk/*
+
+RUN mkdir -p /go/src /go/bin \
     && chmod -R 777 /go
 
 # apk go installs go at /usr/lib/go
